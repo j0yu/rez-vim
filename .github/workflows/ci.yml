@@ -20,20 +20,22 @@ jobs:
   install:
     name: Install as rez package (py${{ matrix.python }})
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python: [2.7, 3.7]
+    container:
+        image: centos:7
 
     steps:
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+    - uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python }}
+        python-version: 2.7
 
     - uses: j0yu/setup-rez@v1
+    - uses: actions/checkout@v2
 
-    - name: Checkout ${{ github.repository }}
-      uses: actions/checkout@v2
+    - name: Setup yum assumeyes, sudo and docker
+      run: |
+        echo "assumeyes=1" >> /etc/yum.conf
+        yum install sudo
+        curl -L https://get.docker.com/ | bash -s
 
     - run: rez build --install
     - run: rez env vim -- vim --version

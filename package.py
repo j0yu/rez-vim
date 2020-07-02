@@ -3,7 +3,7 @@ name = "vim"
 __version__ = "8.2.1114"
 version = __version__ + "+local.1.0.0"
 
-variants = [["os-CentOS-7"]]
+variants = [["os-centos-7", "arch-x86_64"]]
 
 build_command = r"""
 set -euf -o pipefail
