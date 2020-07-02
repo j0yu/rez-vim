@@ -1,6 +1,7 @@
 name = "vim"
 
-version = "8.2.1114"
+__version__ = "8.2.1114"
+version = __version__ + "+local.1.0.0"
 
 variants = [["os-CentOS-7"]]
 
