@@ -40,7 +40,7 @@ fi
 """.format(
     CONTAINER_ARGS="${{CONTAINER_ARGS[@]}}",
     install_dir="${{REZ_BUILD_INSTALL_PATH:-/usr/local}}",
-    version=version,
+    version=__version__,
 )
 
 
